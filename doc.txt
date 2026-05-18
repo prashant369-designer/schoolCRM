@@ -1,0 +1,12 @@
+1. model for school admission frequency **
+2. chatbot realted with schools rules and regulation **
+3. student board performance    
+
+Fortigate ID, fortigate id password, resultdb - result percentage , result status , subject wise performance, weekly timetable
+
+
+--------------Required document for School ERP Project--------------------
+1. Admin registration no, email address and password
+2. total classes with section if class 1 have 4 sections so the classes mention like as 
+class1-A, class1-B, class1-C, classs1-D
+3. 
