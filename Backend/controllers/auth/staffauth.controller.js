@@ -1,0 +1,19 @@
+import db from "../../config/db.js";
+
+export const registerstaff = (req, res) => {
+    try{
+    }
+    catch(error){
+        console.log(error);
+        res.status(500).json({ error: "Internal Server Error" });
+    }
+}
+
+export const loginstaff = (req, res) => {
+    try{
+    }
+    catch(error){
+        console.log(error);
+        res.status(500).json({ error: "Internal Server Error" });
+    }
+}
