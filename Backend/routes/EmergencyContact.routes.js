@@ -5,8 +5,8 @@ import {addEmergencyContact,getEmergencyContact,getEmergencyContactById,deleteEm
 
 router.post("/addemergencycontact", addEmergencyContact);
 router.get("/getemergencycontact", getEmergencyContact);
-router.get("/getemergencycontactbyid/:emergencycontact_id", getEmergencyContactById);
-router.delete("/deleteemergencycontact/:emergencycontact_id", deleteEmergencyContact);
-router.put("/updateemergencycontact/:emergencycontact_id", updateEmergencyContact);
+router.get("/getemergencycontactbyid/:emergency_id", getEmergencyContactById);
+router.delete("/deleteemergencycontact/:emergency_id", deleteEmergencyContact);
+router.put("/updateemergencycontact/:emergency_id", updateEmergencyContact);
 
 export default router;

@@ -7,7 +7,7 @@ import {
 from "../controllers/StudentContactInfo.controller.js";
 
 router.post("/createstudentcontactinfo", createStudentContactInfo);
-router.get("/getstudentcontactinfobyid/:studentId", getStudentContactInfo);
+router.get("/getstudentcontactinfobyid/:contact_id", getStudentContactInfo);
 router.get("/getallstudentcontactinfo", getallstudentcontactInfo);
 
 export default router;

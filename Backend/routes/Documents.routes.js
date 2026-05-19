@@ -11,7 +11,7 @@ const router = express.Router();
 
 router.post("/add", addDocument);
 router.get("/", getAllDocuments);
-router.get("/student/:student_id", getDocumentsByStudentId);
+router.get("/student/:document_id", getDocumentsByStudentId);
 router.put("/status/:document_id", updateDocumentStatus);
 router.delete("/delete/:document_id", deleteDocument);
 

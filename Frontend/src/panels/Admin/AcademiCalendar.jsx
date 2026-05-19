@@ -41,7 +41,7 @@ const AdminEventCalendar = () => {
   const fetchEvents = async () => {
     try {
       const res = await axios.get("http://localhost:3000/api/events/getevents");
-      setEvents(res.data.data || []);
+      setEvents(res.data || []);
     } catch (error) {
       console.log("Fetch error:", error);
     }
@@ -84,11 +84,14 @@ const AdminEventCalendar = () => {
       if (editId) {
         await axios.put(
           `http://localhost:3000/api/events/updateevent/${editId}`,
-          formData
+          formData,
         );
         alert("Event updated successfully");
       } else {
-        await axios.post("http://localhost:3000/api/events/createevent", formData);
+        await axios.post(
+          "http://localhost:3000/api/events/createevent",
+          formData,
+        );
         alert("Event created successfully");
       }
 
@@ -155,11 +158,13 @@ const AdminEventCalendar = () => {
   const filteredEvents = events.filter((event) =>
     `${event.event_title} ${event.event_type} ${event.status} ${event.target_audience}`
       .toLowerCase()
-      .includes(search.toLowerCase())
+      .includes(search.toLowerCase()),
   );
 
   const totalUpcoming = events.filter((e) => e.status === "Upcoming").length;
-  const totalHoliday = events.filter((e) => e.is_holiday === 1 || e.is_holiday === true).length;
+  const totalHoliday = events.filter(
+    (e) => e.is_holiday === 1 || e.is_holiday === true,
+  ).length;
   const totalCompleted = events.filter((e) => e.status === "Completed").length;
 
   return (
@@ -191,22 +196,30 @@ const AdminEventCalendar = () => {
       <div className="mb-6 grid grid-cols-1 gap-4 md:grid-cols-4">
         <div className="rounded-2xl bg-white p-5 shadow-sm border">
           <p className="text-sm text-gray-500">Total Events</p>
-          <h3 className="mt-2 text-3xl font-bold text-gray-900">{events.length}</h3>
+          <h3 className="mt-2 text-3xl font-bold text-gray-900">
+            {events.length}
+          </h3>
         </div>
 
         <div className="rounded-2xl bg-white p-5 shadow-sm border">
           <p className="text-sm text-gray-500">Upcoming</p>
-          <h3 className="mt-2 text-3xl font-bold text-blue-700">{totalUpcoming}</h3>
+          <h3 className="mt-2 text-3xl font-bold text-blue-700">
+            {totalUpcoming}
+          </h3>
         </div>
 
         <div className="rounded-2xl bg-white p-5 shadow-sm border">
           <p className="text-sm text-gray-500">Holidays</p>
-          <h3 className="mt-2 text-3xl font-bold text-purple-700">{totalHoliday}</h3>
+          <h3 className="mt-2 text-3xl font-bold text-purple-700">
+            {totalHoliday}
+          </h3>
         </div>
 
         <div className="rounded-2xl bg-white p-5 shadow-sm border">
           <p className="text-sm text-gray-500">Completed</p>
-          <h3 className="mt-2 text-3xl font-bold text-green-700">{totalCompleted}</h3>
+          <h3 className="mt-2 text-3xl font-bold text-green-700">
+            {totalCompleted}
+          </h3>
         </div>
       </div>
 
@@ -358,7 +371,9 @@ const AdminEventCalendar = () => {
             </div>
 
             <div className="flex items-center justify-between rounded-xl border border-gray-200 bg-gray-50 px-4 py-3">
-              <label className="text-sm font-medium text-gray-600">Event Color</label>
+              <label className="text-sm font-medium text-gray-600">
+                Event Color
+              </label>
               <input
                 type="color"
                 name="event_color"
@@ -404,7 +419,9 @@ const AdminEventCalendar = () => {
         <div className="rounded-3xl bg-white p-5 shadow-sm border xl:col-span-2">
           <div className="mb-5 flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
             <div>
-              <h2 className="text-xl font-bold text-gray-900">All School Events</h2>
+              <h2 className="text-xl font-bold text-gray-900">
+                All School Events
+              </h2>
               <p className="text-sm text-gray-500">
                 View, edit, and delete calendar records.
               </p>
@@ -449,10 +466,14 @@ const AdminEventCalendar = () => {
                         <div className="flex items-center gap-3">
                           <span
                             className="h-11 w-2 rounded-full"
-                            style={{ backgroundColor: event.event_color || "#2563EB" }}
+                            style={{
+                              backgroundColor: event.event_color || "#2563EB",
+                            }}
                           ></span>
                           <div>
-                            <p className="font-bold text-gray-900">{event.event_title}</p>
+                            <p className="font-bold text-gray-900">
+                              {event.event_title}
+                            </p>
                             <p className="flex items-center gap-1 text-sm text-gray-500">
                               <MapPin size={14} />
                               {event.event_location || "No location"}
@@ -474,7 +495,8 @@ const AdminEventCalendar = () => {
                         </p>
                         <p className="mt-1 flex items-center gap-1">
                           <Clock size={14} />
-                          {event.event_start_time || "--"} - {event.event_end_time || "--"}
+                          {event.event_start_time || "--"} -{" "}
+                          {event.event_end_time || "--"}
                         </p>
                       </td>
 
@@ -488,7 +510,7 @@ const AdminEventCalendar = () => {
                       <td className="px-4 py-4">
                         <span
                           className={`rounded-full border px-3 py-1 text-sm font-semibold ${getStatusStyle(
-                            event.status
+                            event.status,
                           )}`}
                         >
                           {event.status}
@@ -528,15 +550,22 @@ const AdminEventCalendar = () => {
           <div className="space-y-4 md:hidden">
             {filteredEvents.length > 0 ? (
               filteredEvents.map((event) => (
-                <div key={event.event_id} className="rounded-2xl border bg-slate-50 p-4">
+                <div
+                  key={event.event_id}
+                  className="rounded-2xl border bg-slate-50 p-4"
+                >
                   <div className="flex items-start justify-between gap-3">
                     <div>
-                      <h3 className="font-bold text-gray-900">{event.event_title}</h3>
-                      <p className="mt-1 text-sm text-gray-500">{event.event_type}</p>
+                      <h3 className="font-bold text-gray-900">
+                        {event.event_title}
+                      </h3>
+                      <p className="mt-1 text-sm text-gray-500">
+                        {event.event_type}
+                      </p>
                     </div>
                     <span
                       className={`rounded-full border px-3 py-1 text-xs font-semibold ${getStatusStyle(
-                        event.status
+                        event.status,
                       )}`}
                     >
                       {event.status}

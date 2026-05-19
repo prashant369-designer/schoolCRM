@@ -35,7 +35,7 @@ const EventCalendar = ({ panelType = "Student" }) => {
       setLoading(true);
 
       const res = await axios.get("http://localhost:3000/api/events/getevents");
-      const data = res.data.data || [];
+      const data = res.data || [];
 
       setRawEvents(data);
 
@@ -69,9 +69,10 @@ const EventCalendar = ({ panelType = "Student" }) => {
     return events.filter((item) => {
       const event = item.extendedProps;
 
-      const matchSearch = `${event.event_title} ${event.event_type} ${event.event_location} ${event.status}`
-        .toLowerCase()
-        .includes(search.toLowerCase());
+      const matchSearch =
+        `${event.event_title} ${event.event_type} ${event.event_location} ${event.status}`
+          .toLowerCase()
+          .includes(search.toLowerCase());
 
       const matchStatus =
         statusFilter === "All" || event.status === statusFilter;
@@ -82,7 +83,7 @@ const EventCalendar = ({ panelType = "Student" }) => {
 
   const upcomingCount = rawEvents.filter((e) => e.status === "Upcoming").length;
   const holidayCount = rawEvents.filter(
-    (e) => e.is_holiday === 1 || e.is_holiday === true
+    (e) => e.is_holiday === 1 || e.is_holiday === true,
   ).length;
   const examCount = rawEvents.filter((e) => e.event_type === "Exam").length;
 
@@ -295,7 +296,9 @@ const EventCalendar = ({ panelType = "Student" }) => {
             >
               <div className="flex items-start justify-between gap-4">
                 <div>
-                  <p className="text-sm opacity-90">{selectedEvent.event_type}</p>
+                  <p className="text-sm opacity-90">
+                    {selectedEvent.event_type}
+                  </p>
                   <h2 className="mt-1 text-2xl font-bold">
                     {selectedEvent.event_title}
                   </h2>
@@ -314,7 +317,7 @@ const EventCalendar = ({ panelType = "Student" }) => {
               <div className="flex items-center justify-between">
                 <span
                   className={`rounded-full border px-3 py-1 text-sm font-semibold ${getStatusStyle(
-                    selectedEvent.status
+                    selectedEvent.status,
                   )}`}
                 >
                   {selectedEvent.status}

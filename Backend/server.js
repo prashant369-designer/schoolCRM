@@ -36,8 +36,6 @@ import TimetableRoutes from "./routes/Timetable.routes.js";
 import Notification from "./routes/Notification.route.js";
 import EventCalendarRoutes from "./routes/EventCalendar.routes.js";
 
-
-
 // MIDDLEWARE
 app.use(cors());
 app.use(express.json());
@@ -51,7 +49,6 @@ app.get("/", (req, res) => {
 app.use("/api/auth/students", studentAuthRoutes);
 app.use("/api/auth/staff", staffAuthRoutes);
 app.use("/api/auth/teachers", teacherAuthRoutes);
-
 
 // **************************************API FOR STUDENT*************************************
 // api for student details
@@ -69,10 +66,9 @@ app.use("/api/emergencycontact", EmergencyContact);
 // api for student documents
 app.use("/api/documents", Documents);
 
-
 // **************************************API FOR TEACHER***************************************
 // api for teacher
-app.use("/api/teachersdetails", teacherRoutes);  
+app.use("/api/teachersdetails", teacherRoutes);
 // api for teacher contact info
 app.use("/api/teachercontactinfo", teacherContactInfoRoutes);
 // api for teacher experience
@@ -90,7 +86,6 @@ app.use("/api/timeslots", TimeSlots);
 // api for timetable
 app.use("/api/timetable", TimetableRoutes);
 
-
 // **************************************COMMON API'S***************************************
 // api for notification
 app.use("/api/notifications", Notification);
@@ -102,4 +97,3 @@ const PORT = process.env.PORT || 8000;
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 });
-

@@ -22,48 +22,48 @@ function HeroPage() {
     });
   };
 
-const handleSubmit = async (e) => {
-  e.preventDefault();
+  const handleSubmit = async (e) => {
+    e.preventDefault();
 
-  try {
-    const apiUrl =
-      step === 2
-        ? `${base_url}/auth/teachers/login`
-        : `${base_url}/auth/students/login`;
+    try {
+      const apiUrl =
+        step === 2
+          ? `${base_url}/auth/teachers/login`
+          : `${base_url}/auth/students/login`;
 
-    const res = await axios.post(apiUrl, formData);
+      const res = await axios.post(apiUrl, formData);
 
-    const { token, role, id, registration_no, mailid } = res.data;
+      const { token, role, id, registration_no, mailid } = res.data;
 
-    localStorage.setItem("token", token);
-    localStorage.setItem("role", role);
-    localStorage.setItem("id", id);
+      localStorage.setItem("token", token);
+      localStorage.setItem("role", role);
+      localStorage.setItem("id", id);
 
-    localStorage.setItem(
-      "user",
-      JSON.stringify({
-        id,
-        registration_no,
-        mailid,
-        role,
-      })
-    );
+      localStorage.setItem(
+        "user",
+        JSON.stringify({
+          id,
+          registration_no,
+          mailid,
+          role,
+        }),
+      );
 
-    alert("Login successful");
-    setOpen(false);
+      alert("Login successful");
+      setOpen(false);
 
-    if (role === "teacher") {
-      navigate("/teacher");
-    } else if (role === "student") {
-      navigate("/student");
-    } else {
-      navigate("/");
+      if (role === "teacher") {
+        navigate("/teacher");
+      } else if (role === "student") {
+        navigate("/student");
+      } else {
+        navigate("/");
+      }
+    } catch (error) {
+      console.error(error);
+      alert(error.response?.data?.message || "Login failed");
     }
-  } catch (error) {
-    console.error(error);
-    alert(error.response?.data?.message || "Login failed");
-  }
-};
+  };
   return (
     <>
       <div className="bg-[#EAE1D6]">
@@ -171,7 +171,11 @@ const handleSubmit = async (e) => {
                       onClick={() => setShowPassword(!showPassword)}
                       className="absolute right-3 top-1/2 -translate-y-1/2 cursor-pointer"
                     >
-                      {showPassword ? <FaRegEyeSlash className="text-[#6b2d2d]" /> : <FaRegEye className="text-[#6b2d2d]" />}
+                      {showPassword ? (
+                        <FaRegEyeSlash className="text-[#6b2d2d]" />
+                      ) : (
+                        <FaRegEye className="text-[#6b2d2d]" />
+                      )}
                     </span>
                   </div>
                 </div>

@@ -44,7 +44,7 @@ function Navbar({ panelName = "School ERP", panelType = "Student Panel" }) {
           },
         }
       );
-      setStudentDetails(response.data.data);
+      setStudentDetails(response.data);
     } catch (error) {
       console.error("Student details error:", error);
     } finally {

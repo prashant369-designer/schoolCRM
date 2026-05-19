@@ -34,7 +34,7 @@ export default function StudentPortal() {
       },
     );
 
-    setStudentDetails(response.data.data);
+    setStudentDetails(response.data);
   };
 
   const fetchFullTimetable = async () => {
@@ -42,7 +42,7 @@ export default function StudentPortal() {
       `${base_url}/timetable/getalltimetables`,
     );
 
-    const timetableRows = timetableRes.data.data || [];
+    const timetableRows = timetableRes.data || [];
 
     const fullData = await Promise.all(
       timetableRows.map(async (item) => {

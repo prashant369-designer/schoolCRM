@@ -28,7 +28,6 @@ export default function ProfileSecurityUI() {
   const [showPassword, setShowPassword] = useState(false);
   const [showNewPassword, setShowNewPassword] = useState(false);
 
-
   const handleChange = (field, value) => {
     setFormData((current) => ({ ...current, [field]: value }));
   };
@@ -66,7 +65,7 @@ export default function ProfileSecurityUI() {
           },
         },
       );
-      setStudentDetails(response.data.data);
+      setStudentDetails(response.data);
     } catch (error) {
       console.error("Student details error:", error);
     } finally {
@@ -340,7 +339,7 @@ export default function ProfileSecurityUI() {
                   description="After saving, an Email will be sent to your new email address for confirmation."
                 />
 
-                <ActionButtons  primaryLabel="Update Email" />
+                <ActionButtons primaryLabel="Update Email" />
               </SettingsCard>
             </form>
           )}
@@ -407,7 +406,7 @@ export default function ProfileSecurityUI() {
                   </ul>
                 </div>
 
-                <ActionButtons  primaryLabel="Change Password" />
+                <ActionButtons primaryLabel="Change Password" />
               </SettingsCard>
             </form>
           )}
@@ -438,7 +437,8 @@ export default function ProfileSecurityUI() {
                     <div>
                       <h3 className="font-bold">Reset link information</h3>
                       <p className="mt-1 text-sm leading-6">
-                        The password send to your mail address. Plase go through the mail address.
+                        The password send to your mail address. Plase go through
+                        the mail address.
                       </p>
                     </div>
                   </div>
@@ -554,10 +554,16 @@ function VerificationBox({ title, description }) {
 function ActionButtons({ primaryLabel }) {
   return (
     <div className="flex flex-col-reverse gap-3 border-t border-slate-200 pt-5 sm:flex-row sm:justify-end">
-      <button type="button" className="rounded-2xl border border-slate-200 bg-white px-5 py-3 text-sm font-bold text-slate-700 transition hover:bg-slate-50 cursor-pointer">
+      <button
+        type="button"
+        className="rounded-2xl border border-slate-200 bg-white px-5 py-3 text-sm font-bold text-slate-700 transition hover:bg-slate-50 cursor-pointer"
+      >
         Cancel
       </button>
-      <button type="submit" className="inline-flex cursor-pointer items-center justify-center gap-2 rounded-2xl bg-indigo-600 px-5 py-3 text-sm font-bold text-white shadow-lg shadow-indigo-200 transition hover:bg-indigo-700">
+      <button
+        type="submit"
+        className="inline-flex cursor-pointer items-center justify-center gap-2 rounded-2xl bg-indigo-600 px-5 py-3 text-sm font-bold text-white shadow-lg shadow-indigo-200 transition hover:bg-indigo-700"
+      >
         <Save size={18} /> {primaryLabel}
       </button>
     </div>
