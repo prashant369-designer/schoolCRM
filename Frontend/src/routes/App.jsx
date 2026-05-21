@@ -49,6 +49,7 @@ import LeaveRequest from "../panels/Students/LeaveRequest.jsx";
 import StudyMaterial from "../panels/Students/StudyMaterial.jsx";
 import StudentAssignments from "../panels/Students/Assignments.jsx";
 import VideoCallStudent from "../panels/Students/VideoCallStudent.jsx";
+import MapBusRoute from "../panels/Students/MapBusRoute.jsx";
 
 // teacher panel
 import TeacherDashboard from "../panels/Teachers/Dashboard.jsx";
@@ -121,6 +122,7 @@ function App() {
               <Route path="studymaterial" element={<StudyMaterial />} />
               <Route path="assignments" element={<StudentAssignments />} />
               <Route path="videocallstudent" element={<VideoCallStudent />} />
+              <Route path="mapbusroute" element={<MapBusRoute />} />
             </Route>
           </Route>
 

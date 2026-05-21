@@ -8,6 +8,8 @@ const app = express();
 
 // aghora api
 import agoraRoutes from "./aghora.js";
+import googleMapRoutes from "./googleMaproute.js"
+import exam from "./examRoutes.js";
 
 // *************************************AUTH ROUTES importing******************************************
 import studentAuthRoutes from "./routes/auth/studentauth.routes.js";
@@ -97,6 +99,10 @@ app.use("/api/events", EventCalendarRoutes);
 
   // aghora api
   app.use("/api/video", agoraRoutes);
+  // google map api
+  app.use("/api/transport", googleMapRoutes);
+  // exam
+  app.use("/api/exam",exam);
 
 const PORT = process.env.PORT || 8000;
 

@@ -13,9 +13,14 @@ class1-A, class1-B, class1-C, classs1-D
 
 1. zoom integration - for online class
 2. meet integration
-3. exam conduct 
+3. exam conduct - enhance the ui of this and as well as backend
 4. pay fee - stripe,razorpay,phonepay,paytm,bhartpe,paypal,ccavenue
-5. Google map - transport
-6. video calling with teacher to student - video call api (aghora) 
+5. Google map - transport - route_students,buses,bus_routes table name
+6. video calling with teacher to student - video call api (aghora)
+only integration done , now one teacher connect with the one teacher and one student connect to our class teachers.
+
 7. pooling
 8. plugin- iframe - how to make and how to implement 
+
+9. use Redux in student and teacher panel for the save all details of teacher and student just like allstudents api table have the all data of students so excess and use in code
+

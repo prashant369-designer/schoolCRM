@@ -130,6 +130,15 @@ function AdminSidebar({ closeSidebar = () => {} }) {
             <GraduationCap size={20} />
             Video Call
           </NavLink>
+
+          <NavLink
+            onClick={closeSidebar}
+            to="/student/mapbusroute"
+            className={linkClasses}
+          >
+            <GraduationCap size={20} />
+            Map Bus Route
+          </NavLink>
             </div>
           )}
 
