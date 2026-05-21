@@ -9,4 +9,13 @@ Fortigate ID, fortigate id password, resultdb - result percentage , result statu
 1. Admin registration no, email address and password
 2. total classes with section if class 1 have 4 sections so the classes mention like as 
 class1-A, class1-B, class1-C, classs1-D
-3. 
+
+
+1. zoom integration - for online class
+2. meet integration
+3. exam conduct 
+4. pay fee - stripe,razorpay,phonepay,paytm,bhartpe,paypal,ccavenue
+5. Google map - transport
+6. video calling with teacher to student - video call api (aghora) 
+7. pooling
+8. plugin- iframe - how to make and how to implement 

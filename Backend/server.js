@@ -6,6 +6,9 @@ import express from "express";
 import cors from "cors";
 const app = express();
 
+// aghora api
+import agoraRoutes from "./aghora.js";
+
 // *************************************AUTH ROUTES importing******************************************
 import studentAuthRoutes from "./routes/auth/studentauth.routes.js";
 import staffAuthRoutes from "./routes/auth/staffauth.routes.js";
@@ -91,6 +94,9 @@ app.use("/api/timetable", TimetableRoutes);
 app.use("/api/notifications", Notification);
 // api for event calendar
 app.use("/api/events", EventCalendarRoutes);
+
+  // aghora api
+  app.use("/api/video", agoraRoutes);
 
 const PORT = process.env.PORT || 8000;
 

@@ -47,7 +47,7 @@ export default function StudentDetails() {
           },
         }
       );
-      setStudentDetails(response.data.data);
+      setStudentDetails(response.data);
     } catch (error) {
       console.error("Student details error:", error);
     } finally {
@@ -245,7 +245,7 @@ export default function StudentDetails() {
             <div className="grid gap-4 md:grid-cols-2">
               <Detail icon={User} label="Person Name" value={emergency.person_name} />
               <Detail icon={CircleUser} label="Relation" value={emergency.Relation} />
-              <Detail icon={MapPin} label="City" value={emergency.city} />
+              <Detail icon={MapPin} label="City" value={emergency.City} />
               <Detail icon={Phone} label="Contact No" value={emergency.Contact_No} />
             </div>
           </Section>

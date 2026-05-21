@@ -4,6 +4,8 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 // public route
 import Home from "../FullyPage/Home.jsx";
 import Chatbot from "../Components/chatbot";
+// private route
+import PrivateRoute from "./PrivateRoute.jsx";
 // admin panel
 import AdminPanel from "../layouts/AdminPageLayout.jsx";
 import Dashboard from "../panels/Admin/Dashboard.jsx";
@@ -43,10 +45,24 @@ import StudentProfile from "../panels/Students/Profile.jsx";
 import SearchFaculty from "../panels/Students/SearchFaculty.jsx";
 import ViewResult from "../panels/Students/ViewResult.jsx";
 import PayFee from "../panels/Students/PayFee.jsx";
+import LeaveRequest from "../panels/Students/LeaveRequest.jsx";
+import StudyMaterial from "../panels/Students/StudyMaterial.jsx";
+import StudentAssignments from "../panels/Students/Assignments.jsx";
+import VideoCallStudent from "../panels/Students/VideoCallStudent.jsx";
 
 // teacher panel
 import TeacherDashboard from "../panels/Teachers/Dashboard.jsx";
 import TeacherPageLayout from "../layouts/TeacherPageLayout.jsx";
+import Assignments from "../panels/Teachers/Assignments.jsx";
+import AttendanceManagement from "../panels/Teachers/AttendanceManagement.jsx";
+import DocumentsResources from "../panels/Teachers/DocumentsResources.jsx";
+import ExamsMarks from "../panels/Teachers/Exams&Marks.jsx";
+import LeaveManagement from "../panels/Teachers/LeaveManagement.jsx";
+import Myprofile from "../panels/Teachers/Myprofile.jsx";
+import MyTimetable from "../panels/Teachers/MyTimetable.jsx";
+import Settings from "../panels/Teachers/Settings.jsx";
+import StudentManagement from "../panels/Teachers/StudentManagement.jsx";
+import VideoCallTeacher from "../panels/Teachers/VideoCallTeacher.jsx";
 
 function App() {
   return (
@@ -57,44 +73,55 @@ function App() {
           <Route path="/" element={<Home />} />
 
           {/* Admin Routes */}
-          <Route path="/admin" element={<AdminPanel />}>
-            <Route index element={<Dashboard />} />
-            <Route path="dashboard" element={<Dashboard />} />
-            <Route path="registersst" element={<RegisterSST />} />
-            <Route path="assignclassteacher" element={<AssignClassTeacher />} />
-            <Route path="assignclass" element={<AssignClass />} />
-            <Route path="facultydetails" element={<FacultyDetails />} />
-            <Route path="studentdetails" element={<StudentDetails />} />
-            <Route path="staffdetails" element={<StaffDetails />} />
-            <Route path="awards" element={<Awards />} />
-            <Route path="toppillars" element={<TopPillars />} />
-            <Route path="problemsubmission" element={<ProblemSubmit />} />
-            <Route path="profile" element={<Profile />} />
-            <Route path="academiccalendar" element={<AcademicCalendar />} />
-            <Route path="reports" element={<Reports />} />
-            <Route path="error" element={<Error />} />
-            <Route path="docs" element={<Documnets />} />
-            <Route path="totalclasses" element={<Totalclasses />} />
-            <Route path="totalrooms" element={<TotalRooms />} />
-            <Route path="totalsubjects" element={<TotalSubjects />} />
-            <Route path="timeslots" element={<TimeSlots />} />
-            <Route path="notification" element={<AdminNotification />} />
+          <Route element={<PrivateRoute allowedRoles={["admin"]} />}>
+            <Route path="/admin" element={<AdminPanel />}>
+              <Route index element={<Dashboard />} />
+              <Route path="dashboard" element={<Dashboard />} />
+              <Route path="registersst" element={<RegisterSST />} />
+              <Route
+                path="assignclassteacher"
+                element={<AssignClassTeacher />}
+              />
+              <Route path="assignclass" element={<AssignClass />} />
+              <Route path="facultydetails" element={<FacultyDetails />} />
+              <Route path="studentdetails" element={<StudentDetails />} />
+              <Route path="staffdetails" element={<StaffDetails />} />
+              <Route path="awards" element={<Awards />} />
+              <Route path="toppillars" element={<TopPillars />} />
+              <Route path="problemsubmission" element={<ProblemSubmit />} />
+              <Route path="profile" element={<Profile />} />
+              <Route path="academiccalendar" element={<AcademicCalendar />} />
+              <Route path="reports" element={<Reports />} />
+              <Route path="error" element={<Error />} />
+              <Route path="docs" element={<Documnets />} />
+              <Route path="totalclasses" element={<Totalclasses />} />
+              <Route path="totalrooms" element={<TotalRooms />} />
+              <Route path="totalsubjects" element={<TotalSubjects />} />
+              <Route path="timeslots" element={<TimeSlots />} />
+              <Route path="notification" element={<AdminNotification />} />
+            </Route>
           </Route>
 
           {/* Student Routes */}
-          <Route path="/student" element={<StudentPageLayout />}>
-            <Route index element={<StudentDashboard />} />
-            <Route path="dashboard" element={<StudentDashboard />} />
-            <Route path="myaccount" element={<Myaccount />} />
-            <Route path="profileprint" element={<ProfilePrint />} />
-            <Route path="eventcalendar" element={<EventCalendar />} />
-            <Route path="feedbackform" element={<FeedbackForm />} />
-            <Route path="notification" element={<Notification />} />
-            <Route path="onlineexam" element={<OnlineExam />} />
-            <Route path="studentprofile" element={<StudentProfile />} />
-            <Route path="searchfaculty" element={<SearchFaculty />} />
-            <Route path="viewresult" element={<ViewResult />} />
-            <Route path="myfee" element={<PayFee />} />
+          <Route element={<PrivateRoute allowedRoles={["student"]} />}>
+            <Route path="/student" element={<StudentPageLayout />}>
+              <Route index element={<StudentDashboard />} />
+              <Route path="dashboard" element={<StudentDashboard />} />
+              <Route path="myaccount" element={<Myaccount />} />
+              <Route path="profileprint" element={<ProfilePrint />} />
+              <Route path="eventcalendar" element={<EventCalendar />} />
+              <Route path="feedbackform" element={<FeedbackForm />} />
+              <Route path="notification" element={<Notification />} />
+              <Route path="onlineexam" element={<OnlineExam />} />
+              <Route path="studentprofile" element={<StudentProfile />} />
+              <Route path="searchfaculty" element={<SearchFaculty />} />
+              <Route path="viewresult" element={<ViewResult />} />
+              <Route path="myfee" element={<PayFee />} />
+              <Route path="leave" element={<LeaveRequest />} />
+              <Route path="studymaterial" element={<StudyMaterial />} />
+              <Route path="assignments" element={<StudentAssignments />} />
+              <Route path="videocallstudent" element={<VideoCallStudent />} />
+            </Route>
           </Route>
 
           {/* Staff Routes */}
@@ -104,9 +131,21 @@ function App() {
           </Route>
 
           {/* Teacher Routes */}
-          <Route path="/teacher" element={<TeacherPageLayout />}>
-            <Route index element={<TeacherDashboard />} />
-            <Route path="dashboard" element={<TeacherDashboard />} />
+          <Route element={<PrivateRoute allowedRoles={["teacher"]} />}>
+            <Route path="/teacher" element={<TeacherPageLayout />}>
+              <Route index element={<TeacherDashboard />} />
+              <Route path="dashboard" element={<TeacherDashboard />} />
+              <Route path="assignments" element={<Assignments />} />
+              <Route path="attendance" element={<AttendanceManagement />} />
+              <Route path="documents" element={<DocumentsResources />} />
+              <Route path="exams" element={<ExamsMarks />} />
+              <Route path="leave" element={<LeaveManagement />} />
+              <Route path="myprofile" element={<Myprofile />} />
+              <Route path="timetable" element={<MyTimetable />} />
+              <Route path="settings" element={<Settings />} />
+              <Route path="studentmanagement" element={<StudentManagement />} />
+              <Route path="videocallteacher" element={<VideoCallTeacher />} />
+            </Route>
           </Route>
 
           {/* chatbot */}

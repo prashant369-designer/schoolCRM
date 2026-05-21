@@ -147,10 +147,6 @@ export default function SearchFacultyUI() {
                 </p>
               </div>
             </div>
-
-            <div className="grid grid-cols-1 sm:min-w-105">
-              <HeaderStat label="Total" value={teacherDetails.length} />
-            </div>
           </div>
         </div>
       </section>
@@ -187,30 +183,6 @@ export default function SearchFacultyUI() {
               >
                 <Filter size={18} /> Filters
               </button>
-
-              <div className="flex rounded-2xl border border-slate-200 bg-slate-50 p-1">
-                <button
-                  onClick={() => setViewMode("grid")}
-                  className={`rounded-xl px-4 py-2 text-sm font-bold transition ${
-                    viewMode === "grid"
-                      ? "bg-white text-indigo-600 shadow-sm"
-                      : "text-slate-500"
-                  }`}
-                >
-                  Grid
-                </button>
-
-                <button
-                  onClick={() => setViewMode("list")}
-                  className={`rounded-xl px-4 py-2 text-sm font-bold transition ${
-                    viewMode === "list"
-                      ? "bg-white text-indigo-600 shadow-sm"
-                      : "text-slate-500"
-                  }`}
-                >
-                  List
-                </button>
-              </div>
             </div>
           </div>
         </div>
@@ -226,10 +198,6 @@ export default function SearchFacultyUI() {
               {filteredFaculty.length !== 1 ? "s" : ""}
             </p>
           </div>
-
-          <button className="inline-flex w-fit items-center gap-2 rounded-2xl border border-slate-200 bg-white px-4 py-3 text-sm font-bold text-slate-700 shadow-sm transition hover:bg-slate-50">
-            <SlidersHorizontal size={18} /> Sort by Experience
-          </button>
         </div>
 
         {viewMode === "grid" ? (
@@ -242,8 +210,6 @@ export default function SearchFacultyUI() {
           <div className="overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-sm">
             <div className="hidden grid-cols-[1.4fr_1fr_1fr_120px_140px] gap-4 bg-slate-50 px-5 py-3 text-xs font-bold uppercase tracking-wide text-slate-500 lg:grid">
               <span>Faculty</span>
-              <span>Department</span>
-              <span>Class / Room</span>
               <span>Status</span>
               <span>Action</span>
             </div>
@@ -355,41 +321,15 @@ function FacultyCard({ faculty }) {
           label="Department"
           value={faculty.department}
         />
-        <InfoTile
-          icon={UsersRound}
-          label="Class Teacher"
-          value={faculty.classTeacher}
-        />
+
         <InfoTile
           icon={BriefcaseBusiness}
           label="Experience"
           value={faculty.experience}
         />
-        <InfoTile icon={Clock3} label="Next Class" value={faculty.nextClass} />
-      </div>
-
-      <div className="mt-4 rounded-2xl bg-slate-50 p-4">
-        <p className="mb-2 text-xs font-bold uppercase tracking-wide text-slate-500">
-          Subjects
-        </p>
-
-        <div className="flex flex-wrap gap-2">
-          {faculty.subjects.map((subject) => (
-            <span
-              key={subject}
-              className="rounded-full bg-white px-3 py-1 text-xs font-bold text-slate-700 ring-1 ring-slate-200"
-            >
-              {subject}
-            </span>
-          ))}
-        </div>
       </div>
 
       <div className="mt-4 space-y-2 text-sm text-slate-600">
-        <p className="flex items-center gap-2">
-          <MapPin size={16} className="text-slate-400" /> {faculty.room}
-        </p>
-
         <p className="flex items-center gap-2">
           <Mail size={16} className="text-slate-400" /> {faculty.email}
         </p>

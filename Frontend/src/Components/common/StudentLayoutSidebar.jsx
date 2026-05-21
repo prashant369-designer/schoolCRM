@@ -1,5 +1,7 @@
 import { useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
+import { SiReadthedocs } from "react-icons/si";
+import { MdAssignmentTurnedIn } from "react-icons/md";
 import {
   Bell,
   CalendarDays,
@@ -21,6 +23,7 @@ import {
 function AdminSidebar({ closeSidebar = () => {} }) {
   const [openAccount, setOpenAccount] = useState(true);
   const [openFee, setOpenFee] = useState(true);
+  const [connection, setConnection] = useState(true);
   const navigate = useNavigate();
 
   const handleLogout = () => {
@@ -38,13 +41,17 @@ function AdminSidebar({ closeSidebar = () => {} }) {
 
   return (
     <div className="flex h-full flex-col bg-white">
-        <div className="no-scrollbar flex-1 overflow-y-auto p-4">
+      <div className="no-scrollbar flex-1 overflow-y-auto p-4">
         <p className="mb-3 px-3 text-xs font-black uppercase tracking-wider text-slate-400">
           Main Menu
         </p>
 
         <nav className="space-y-2">
-          <NavLink onClick={closeSidebar} to="/student/dashboard" className={linkClasses}>
+          <NavLink
+            onClick={closeSidebar}
+            to="/student/dashboard"
+            className={linkClasses}
+          >
             <Home size={20} />
             Dashboard
           </NavLink>
@@ -57,18 +64,27 @@ function AdminSidebar({ closeSidebar = () => {} }) {
 
           {openAccount && (
             <div className="ml-3 space-y-2 border-l border-slate-200 pl-3">
-              <NavLink onClick={closeSidebar} to="/student/myaccount" className={linkClasses}>
+              <NavLink
+                onClick={closeSidebar}
+                to="/student/myaccount"
+                className={linkClasses}
+              >
                 <NotebookPen size={20} />
                 My Profile
               </NavLink>
 
-              <NavLink onClick={closeSidebar} to="/student/profileprint" className={linkClasses}>
+              <NavLink
+                onClick={closeSidebar}
+                to="/student/profileprint"
+                className={linkClasses}
+              >
                 <Printer size={20} />
                 Profile Print
               </NavLink>
             </div>
           )}
 
+          {/* fee management */}
           <DropdownButton
             title="Fee Management"
             open={openFee}
@@ -77,29 +93,98 @@ function AdminSidebar({ closeSidebar = () => {} }) {
 
           {openFee && (
             <div className="ml-3 space-y-2 border-l border-slate-200 pl-3">
-              <NavLink onClick={closeSidebar} to="/student/myfee" className={linkClasses}>
+              <NavLink
+                onClick={closeSidebar}
+                to="/student/myfee"
+                className={linkClasses}
+              >
                 <WalletCards size={20} />
                 Pay My Fee
               </NavLink>
             </div>
           )}
 
-          <NavLink onClick={closeSidebar} to="/student/viewresult" className={linkClasses}>
-            <FileText size={20} />
-            View Result
-          </NavLink>
+          {/* video connection */}
+          <DropdownButton
+            title="Online Connect"
+            open={connection}
+            onClick={() => setConnection(!connection)}
+          />
 
-          <NavLink onClick={closeSidebar} to="/student/onlineexam" className={linkClasses}>
+          {connection && (
+            <div className="ml-3 space-y-2 border-l border-slate-200 pl-3">
+          <NavLink
+            onClick={closeSidebar}
+            to="/student/onlineexam"
+            className={linkClasses}
+          >
             <GraduationCap size={20} />
             Online Exam
           </NavLink>
 
-          <NavLink onClick={closeSidebar} to="/student/searchfaculty" className={linkClasses}>
+          <NavLink
+            onClick={closeSidebar}
+            to="/student/videocallstudent"
+            className={linkClasses}
+          >
+            <GraduationCap size={20} />
+            Video Call
+          </NavLink>
+            </div>
+          )}
+
+          <NavLink
+            onClick={closeSidebar}
+            to="/student/viewresult"
+            className={linkClasses}
+          >
+            <FileText size={20} />
+            View Result
+          </NavLink>
+
+          
+
+          <NavLink
+            onClick={closeSidebar}
+            to="/student/searchfaculty"
+            className={linkClasses}
+          >
             <Search size={20} />
             Search Faculty
           </NavLink>
 
-          <NavLink onClick={closeSidebar} to="/student/notification" className={linkClasses}>
+          <NavLink
+            to="/student/leave"
+            onClick={closeSidebar}
+            className={linkClasses}
+          >
+            <SiReadthedocs className="h-5 w-5" />
+            <span>Leave Requests</span>
+          </NavLink>
+
+          <NavLink
+            onClick={closeSidebar}
+            to="/student/studymaterial"
+            className={linkClasses} 
+          >
+            <CreditCard size={20} />
+            Study Material
+          </NavLink>
+
+          <NavLink
+            onClick={closeSidebar}
+            to="/student/assignments"
+            className={linkClasses} 
+          >
+            <MdAssignmentTurnedIn size={20} />
+           Assignments
+          </NavLink>
+
+          <NavLink
+            onClick={closeSidebar}
+            to="/student/notification"
+            className={linkClasses}
+          >
             <Bell size={20} />
             Notification
           </NavLink>
@@ -108,17 +193,29 @@ function AdminSidebar({ closeSidebar = () => {} }) {
             Account
           </p>
 
-          <NavLink onClick={closeSidebar} to="/student/studentprofile" className={linkClasses}>
+          <NavLink
+            onClick={closeSidebar}
+            to="/student/studentprofile"
+            className={linkClasses}
+          >
             <UserRound size={20} />
             Profile & Security
           </NavLink>
 
-          <NavLink onClick={closeSidebar} to="/student/eventcalendar" className={linkClasses}>
+          <NavLink
+            onClick={closeSidebar}
+            to="/student/eventcalendar"
+            className={linkClasses}
+          >
             <CalendarDays size={20} />
             Event Calendar
           </NavLink>
 
-          <NavLink onClick={closeSidebar} to="/student/feedbackform" className={linkClasses}>
+          <NavLink
+            onClick={closeSidebar}
+            to="/student/feedbackform"
+            className={linkClasses}
+          >
             <ShieldUser size={20} />
             Feedback Form
           </NavLink>

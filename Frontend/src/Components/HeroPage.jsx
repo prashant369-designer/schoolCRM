@@ -56,7 +56,12 @@ function HeroPage() {
         navigate("/teacher");
       } else if (role === "student") {
         navigate("/student");
-      } else {
+      } else if (role === "admin") {
+        navigate("/admin");
+      } else if (role === "staff") {
+        navigate("/staff");
+       }   
+      else {
         navigate("/");
       }
     } catch (error) {

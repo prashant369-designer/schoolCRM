@@ -140,7 +140,7 @@ export const getStudentFullDetailsByAuthId = async (req, res) => {
 
       WHERE sa.studentauth_id = ?
       `,
-      [studentauth_id]
+      [studentauth_id],
     );
 
     if (studentRows.length === 0) {
@@ -158,7 +158,7 @@ export const getStudentFullDetailsByAuthId = async (req, res) => {
       SELECT * FROM student_contacts
       WHERE student_id = ?
       `,
-      [student_id]
+      [student_id],
     );
 
     // 3. Education info
@@ -167,7 +167,7 @@ export const getStudentFullDetailsByAuthId = async (req, res) => {
       SELECT * FROM student_education
       WHERE studentauth_id = ?
       `,
-      [studentauth_id]
+      [studentauth_id],
     );
 
     // 4. Library info
@@ -176,7 +176,7 @@ export const getStudentFullDetailsByAuthId = async (req, res) => {
       SELECT * FROM student_library
       WHERE student_id = ?
       `,
-      [student_id]
+      [student_id],
     );
 
     // 5. Parent info
@@ -185,7 +185,25 @@ export const getStudentFullDetailsByAuthId = async (req, res) => {
       SELECT * FROM student_parents
       WHERE student_id = ?
       `,
-      [student_id]
+      [student_id],
+    );
+
+    // 6 emergenty info
+    const [emergencyRows] = await db.query(
+      `
+      SELECT * FROM emergency_contact
+      WHERE student_id = ?
+      `,
+      [student_id],
+    );
+
+    // 7 documents info
+    const [documentRows] = await db.query(
+      `
+      SELECT * FROM document
+      WHERE student_id = ?
+      `,
+      [student_id],
     );
 
     res.status(200).json({
@@ -225,6 +243,8 @@ export const getStudentFullDetailsByAuthId = async (req, res) => {
       education: educationRows,
       library: libraryRows[0] || null,
       parents: parentRows[0] || null,
+      emergency: emergencyRows[0] || null,
+      documents: documentRows,
     });
   } catch (err) {
     console.log(err);

@@ -23,7 +23,6 @@ function Navbar({ panelName = "School ERP", panelType = "Student Panel" }) {
   const role = localStorage.getItem("role");
   const id = localStorage.getItem("id");
   const [loading, setLoading] = useState(true);
-  
 
   const handleLogout = () => {
     localStorage.removeItem("token");
@@ -42,7 +41,7 @@ function Navbar({ panelName = "School ERP", panelType = "Student Panel" }) {
           headers: {
             Authorization: `Bearer ${token}`,
           },
-        }
+        },
       );
       setStudentDetails(response.data);
     } catch (error) {
@@ -52,12 +51,11 @@ function Navbar({ panelName = "School ERP", panelType = "Student Panel" }) {
     }
   };
 
-
   useEffect(() => {
     fetchStudentDetails();
   }, [id]);
 
-    if (loading) {
+  if (loading) {
     return (
       <div className="flex min-h-[60vh] items-center justify-center">
         <div className="flex items-center gap-3 rounded-2xl bg-white px-6 py-4 shadow">
@@ -65,7 +63,6 @@ function Navbar({ panelName = "School ERP", panelType = "Student Panel" }) {
           <p className="font-semibold text-slate-600">
             Loading student details...
           </p>
-
         </div>
       </div>
     );
@@ -79,7 +76,7 @@ function Navbar({ panelName = "School ERP", panelType = "Student Panel" }) {
     );
   }
 
-  const { auth, contact, education, parents,classsection } = studentDetails;
+  const { classsection } = studentDetails;
 
   const details = studentDetails?.details;
   const fullName = details
@@ -87,7 +84,6 @@ function Navbar({ panelName = "School ERP", panelType = "Student Panel" }) {
     : "User";
 
   const profileImage = details?.profile_image;
-
 
   return (
     <header className="sticky top-0 z-50 border-b border-slate-200 bg-white/90 backdrop-blur-xl">
@@ -120,9 +116,12 @@ function Navbar({ panelName = "School ERP", panelType = "Student Panel" }) {
             <span className="absolute right-2 top-2 h-2.5 w-2.5 rounded-full bg-red-500 ring-2 ring-white" />
           </Link>
 
-          <button className="hidden rounded-2xl border border-slate-200 bg-slate-50 p-2.5 text-slate-700 transition hover:bg-indigo-50 hover:text-indigo-700 sm:block">
+          <Link
+            to="/student/studentprofile"
+            className="hidden rounded-2xl border border-slate-200 bg-slate-50 px-4 py-2 text-sm font-bold text-slate-700 transition hover:bg-indigo-50 hover:text-indigo-700 sm:block"
+          >
             <Settings size={21} />
-          </button>
+          </Link>
 
           <div className="relative">
             <button

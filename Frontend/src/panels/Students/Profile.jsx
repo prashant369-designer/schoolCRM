@@ -213,15 +213,6 @@ export default function ProfileSecurityUI() {
                 </p>
               </div>
             </div>
-
-            <div className="rounded-2xl border border-emerald-200 bg-emerald-50 px-4 py-3 text-emerald-800">
-              <div className="flex items-center gap-2 text-xs font-bold">
-                <ShieldCheck size={18} /> Account Verified
-              </div>
-              <p className="mt-1 text-xs font-medium">
-                Last updated: 07 May 2026
-              </p>
-            </div>
           </div>
         </div>
       </section>

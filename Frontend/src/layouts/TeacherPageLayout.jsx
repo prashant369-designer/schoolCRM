@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Outlet } from "react-router-dom";
-import AdminNavbar from "../Components/common/LayoutNavbar";
-import AdminSidebar from "../Components/common/TeacherLayoutSidebar";
+import TeacherNavbar from "../Components/common/TeacherLayoutNavbar";
+import TeacherSidebar from "../Components/common/TeacherLayoutSidebar";
 import Chatbotlogo from "../assets/chatbot.png";
 import { Link } from "react-router-dom";
 
@@ -20,7 +20,7 @@ function AdminLayout() {
   return (
     <>
       <div className="h-screen flex flex-col overflow-hidden">
-      <AdminNavbar />
+      <TeacherNavbar />
 
       <div className="flex justify-between items-center p-4 bg-black/40 text-white md:hidden">
           <span className="text-lg font-semibold">Admin Panel</span>
@@ -48,7 +48,7 @@ function AdminLayout() {
             isSidebarOpen ? "block" : "hidden"
           } md:block w-64 border-r border-gray-300 text-white p-4 overflow-auto no-scrollbar`}
         >
-          <AdminSidebar />
+          <TeacherSidebar />
         </div>
 
         {/* Main Content (ONLY THIS SHOULD SCROLL) */}
