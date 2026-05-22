@@ -8,9 +8,10 @@ import {
   Clock3,
   Search,
 } from "lucide-react";
+  const base_url = import.meta.env.VITE_API_URL;  
 
 const API_URL =
-  "http://localhost:3000/api/timeslots";
+  `${base_url}/timeslots`;
 
 const TimeSlots = () => {
   const [timeslots, setTimeslots] = useState([]);

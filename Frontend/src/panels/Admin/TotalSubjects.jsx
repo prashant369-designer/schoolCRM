@@ -8,12 +8,13 @@ import {
   BookOpen,
   Search,
 } from "lucide-react";
+  const base_url = import.meta.env.VITE_API_URL;  
 
 const SUBJECT_API =
-  "http://localhost:3000/api/classandsubject";
+  `${base_url}/classandsubject`;
 
 const CLASS_API =
-  "http://localhost:3000/api/classandsection/getclassandsection";
+  `${base_url}/classandsection/getclassandsection`;
 
 const ClassAndSubject = () => {
   const [subjects, setSubjects] = useState([]);

@@ -9,9 +9,11 @@ function TeacherDashboard() {
 
     const channelName = "class_10_math";
     const uid = teacherId;
+  const base_url = import.meta.env.VITE_API_URL;  
+
 
     const res = await fetch(
-      `http://localhost:3000/api/video/agora-token?channelName=${channelName}&uid=${uid}`
+      `${base_url}/video/agora-token?channelName=${channelName}&uid=${uid}`
     );
 
     const data = await res.json();

@@ -5,6 +5,12 @@ dotenv.config();
 import express from "express";
 import cors from "cors";
 const app = express();
+app.use(
+  cors({
+    origin: "*", // later change this to your frontend URL
+    credentials: true,
+  })
+);
 
 // aghora api
 import agoraRoutes from "./aghora.js";
@@ -42,12 +48,11 @@ import Notification from "./routes/Notification.route.js";
 import EventCalendarRoutes from "./routes/EventCalendar.routes.js";
 
 // MIDDLEWARE
-app.use(cors());
 app.use(express.json());
 
 // DEFAULT ROUTE
 app.get("/", (req, res) => {
-  res.send("Hello World!");
+  res.send("Backend is running!");
 });
 
 // *************************************AUTH API'S******************************************

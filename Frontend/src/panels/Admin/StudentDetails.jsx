@@ -22,8 +22,10 @@ const StudentsDetails = () => {
     return matchesName && matchesClass;
   });
 
+  const base_url = import.meta.env.VITE_API_URL;  
+
   const API_URL =
-    "http://localhost:3000/api/studentsdetails/getallstudentsdetails";
+    `${base_url}/studentsdetails/getallstudentsdetails`;
 
   useEffect(() => {
     fetchStudents();

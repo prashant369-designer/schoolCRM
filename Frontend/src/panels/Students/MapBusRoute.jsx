@@ -12,9 +12,10 @@ export default function TransportMap() {
   const { isLoaded } = useJsApiLoader({
     googleMapsApiKey: import.meta.env.VITE_GOOGLE_MAP_KEY,
   });
+  const base_url = import.meta.env.VITE_API_URL;  
 
   useEffect(() => {
-    fetch("http://localhost:3000/api/transport/route/1")
+    fetch(`${base_url}/transport/route/1`)
       .then((res) => res.json())
       .then((data) => {
         if (data.success) {

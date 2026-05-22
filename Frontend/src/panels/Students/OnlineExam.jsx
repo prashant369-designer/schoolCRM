@@ -548,9 +548,11 @@ function StudentExam() {
   const [questions, setQuestions] = useState([]);
   const [answers, setAnswers] = useState({});
   const [result, setResult] = useState(null);
+  const base_url = import.meta.env.VITE_API_URL;  
+
 
   const loadExam = async () => {
-    const res = await axios.get(`http://localhost:3000/api/exam/1`);
+    const res = await axios.get(`${base_url}/exam/1`);
 
     if (res.data.exam.status !== "published") {
       alert("Exam is not published yet");
@@ -571,8 +573,11 @@ function StudentExam() {
       selected_answer: answers[questionId],
     }));
 
+  const base_url = import.meta.env.VITE_API_URL;  
+
+
     const res = await axios.post(
-      `http://localhost:3000/api/exam/1`,
+      `${base_url}/exam/1`,
       {
         student_id: studentId,
         answers: finalAnswers,

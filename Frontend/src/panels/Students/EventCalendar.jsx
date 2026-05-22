@@ -29,12 +29,13 @@ const EventCalendar = ({ panelType = "Student" }) => {
   const [search, setSearch] = useState("");
   const [statusFilter, setStatusFilter] = useState("All");
   const [loading, setLoading] = useState(false);
+  const base_url = import.meta.env.VITE_API_URL;  
 
   const fetchEvents = async () => {
     try {
       setLoading(true);
 
-      const res = await axios.get("http://localhost:3000/api/events/getevents");
+      const res = await axios.get(`${base_url}/events/getevents`);
       const data = res.data || [];
 
       setRawEvents(data);

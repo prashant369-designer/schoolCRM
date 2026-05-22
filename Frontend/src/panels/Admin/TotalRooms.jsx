@@ -8,9 +8,10 @@ import {
   Building2,
   Search,
 } from "lucide-react";
+  const base_url = import.meta.env.VITE_API_URL;  
 
 const API_URL =
-  "http://localhost:3000/api/totalrooms";
+  `${base_url}/totalrooms`;
 
 const TotalRooms = () => {
   const [rooms, setRooms] = useState([]);

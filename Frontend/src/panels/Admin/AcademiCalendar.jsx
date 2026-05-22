@@ -37,10 +37,12 @@ const AdminEventCalendar = () => {
     status: "Upcoming",
     created_by: 1,
   });
+  const base_url = import.meta.env.VITE_API_URL;  
+
 
   const fetchEvents = async () => {
     try {
-      const res = await axios.get("http://localhost:3000/api/events/getevents");
+      const res = await axios.get(`${base_url}/events/getevents`);
       setEvents(res.data || []);
     } catch (error) {
       console.log("Fetch error:", error);
@@ -83,13 +85,13 @@ const AdminEventCalendar = () => {
     try {
       if (editId) {
         await axios.put(
-          `http://localhost:3000/api/events/updateevent/${editId}`,
+          `${base_url}/events/updateevent/${editId}`,
           formData,
         );
         alert("Event updated successfully");
       } else {
         await axios.post(
-          "http://localhost:3000/api/events/createevent",
+          `${base_url}/events/createevent`,
           formData,
         );
         alert("Event created successfully");
@@ -131,7 +133,7 @@ const AdminEventCalendar = () => {
     if (!window.confirm("Are you sure you want to delete this event?")) return;
 
     try {
-      await axios.delete(`http://localhost:3000/api/events/deleteevent/${id}`);
+      await axios.delete(`${base_url}/events/deleteevent/${id}`);
       alert("Event deleted successfully");
       fetchEvents();
     } catch (error) {

@@ -102,12 +102,14 @@ export default function NotificationUI() {
   const deleteNotification = (id) => {
     setItems((current) => current.filter((item) => item.id !== id));
   };
+  const base_url = import.meta.env.VITE_API_URL;  
+
 
   useEffect(() => {
     const getNotifications = async () => {
       try {
         const res = await axios.get(
-          "http://localhost:3000/api/notifications/getnotification",
+          `${base_url}/notifications/getnotification`,
         );
 
         const formattedData = res.data.map((item) => ({

@@ -19,6 +19,8 @@ function RegisterSST() {
       [e.target.name]: e.target.value,
     });
   };
+  const base_url = import.meta.env.VITE_API_URL;  
+
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -27,7 +29,7 @@ function RegisterSST() {
 
     try {
       const res = await axios.post(
-        "http://localhost:3000/api/auth/registersst",
+        `${base_url}/auth/registersst`,
         formData
       );
 

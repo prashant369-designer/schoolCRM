@@ -152,6 +152,8 @@ export default function VideoCallPage({ callData: externalCallData }) {
   const [callData, setCallData] = useState(externalCallData || null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
+  const base_url = import.meta.env.VITE_API_URL;  
+
 
   const startCall = async () => {
     try {
@@ -160,9 +162,10 @@ export default function VideoCallPage({ callData: externalCallData }) {
       const teacherId = 501;
       const channelName = "class_10_math";
       const uid = teacherId;
+      
 
       const res = await fetch(
-        `http://localhost:3000/api/video/agora-token?channelName=${channelName}&uid=${uid}`,
+        `${base_url}/video/agora-token?channelName=${channelName}&uid=${uid}`,
       );
 
       const data = await res.json();

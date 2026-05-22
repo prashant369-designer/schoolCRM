@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Plus, Edit, Trash2, X, School, Search } from "lucide-react";
+const base_url = import.meta.env.VITE_API_URL;  
 
-const API_URL = "http://localhost:3000/api/classandsection";
+const API_URL = `${base_url}/classandsection`;
 
 const ClassAndSection = () => {
   const [classes, setClasses] = useState([]);
