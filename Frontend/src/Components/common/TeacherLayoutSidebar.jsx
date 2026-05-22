@@ -105,6 +105,15 @@ function TeacherSidebar({ closeSidebar }) {
             </NavLink>
 
             <NavLink
+              to="/teacher/videocallteacher"
+              onClick={handleLinkClick}
+              className={linkClasses}
+            >
+              <FaUserGraduate className="h-5 w-5" />
+              <span>Video call teachers</span>
+            </NavLink>
+
+            <NavLink
               to="/teacher/timetable"
               onClick={handleLinkClick}
               className={linkClasses}
