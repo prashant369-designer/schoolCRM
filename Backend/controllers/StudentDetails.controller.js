@@ -56,15 +56,20 @@ export const createStudentDetails = async (req, res) => {
 
 export const getAllStudentsdetails = async (req, res) => {
   try {
-    await db.ping();
+    await db.query("SELECT 1");
     console.log("DB Connected");
+
     const sql = "SELECT * FROM students_details";
     const [rows] = await db.query(sql);
+
     res.status(200).json(rows);
   } catch (err) {
-    console.log(err);
+    console.log("DB ERROR:", err);
+
     res.status(500).json({
       message: "Error fetching students details",
+      error: err.message,
+      code: err.code,
     });
   }
 };
