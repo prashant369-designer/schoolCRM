@@ -56,10 +56,10 @@ export const createStudentDetails = async (req, res) => {
 
 export const getAllStudentsdetails = async (req, res) => {
   try {
+    await db.ping();
+    console.log("DB Connected");
     const sql = "SELECT * FROM students_details";
-
     const [rows] = await db.query(sql);
-
     res.status(200).json(rows);
   } catch (err) {
     console.log(err);
