@@ -19,27 +19,27 @@ function Navbar() {
         <div>
           <ul className="hidden lg:flex items-center gap-6 text-sm font-medium text-[#6b2d2d]">
             <li>
-              <Link to="/allproducts" className="hover:underline">
+              <Link to="/" className="hover:underline">
                 HOME
               </Link>
             </li>
             <li>
-              <Link to="/allproducts" className="hover:underline">
+              <Link to="/" className="hover:underline">
                 ADMISSION
               </Link>
             </li>
             <li>
-              <Link to="/allproducts" className="hover:underline">
+              <Link to="/" className="hover:underline">
                 EVENTS
               </Link>
             </li>
             <li>
-              <Link to="/allproducts" className="hover:underline">
+              <Link to="/" className="hover:underline">
                 ALUMNI
               </Link>
             </li>
             <li>
-              <Link to="/allproducts" className="hover:underline">
+              <Link to="/" className="hover:underline">
                 CONTACT US
               </Link>
             </li>
@@ -68,19 +68,19 @@ function Navbar() {
       {/* Mobile Menu */}
       {menuOpen && (
         <div className="lg:hidden absolute top-full left-0 w-full bg-[#F5F4EF] flex flex-col items-center gap-6 py-8 text-[#6b2d2d] shadow-md">
-          <Link to="/allproducts" onClick={() => setMenuOpen(false)}>
+          <Link to="/" onClick={() => setMenuOpen(false)}>
             All Products
           </Link>
-          <Link to="/allproducts" onClick={() => setMenuOpen(false)}>
+          <Link to="/" onClick={() => setMenuOpen(false)}>
             Women
           </Link>
-          <Link to="/allproducts" onClick={() => setMenuOpen(false)}>
+          <Link to="/" onClick={() => setMenuOpen(false)}>
             Men
           </Link>
-          <Link to="/allproducts" onClick={() => setMenuOpen(false)}>
+          <Link to="/" onClick={() => setMenuOpen(false)}>
             Accessories
           </Link>
-          <Link to="/login" onClick={() => setMenuOpen(false)}>
+          <Link to="/" onClick={() => setMenuOpen(false)}>
             Login
           </Link>
         </div>
